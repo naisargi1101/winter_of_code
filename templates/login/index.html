@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+
+</head>
+<body>
+    {% for message in messages %}
+    <div>
+        <strong class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">Message: </strong>{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true"></spanaria-hidden>&times;</span></button>
+    </div>
+    {% endfor %}
+
+    <h3>Welcome to Home page</h3>
+
+    {% if user.is_authenticated %}
+    <h3>Hello {{fname}}</h3>
+    <button type="submit"><a href="/signout">SignOut</a></button>    
+    {% else %}
+    <button type="submit"><a href="/signup">SignUp</a></button>
+    <button type="submit"><a href="/signin">SignIn</a></button>
+    {% endif %}
+    
+</body>
+</html>
