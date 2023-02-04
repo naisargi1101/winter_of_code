@@ -1,6 +1,6 @@
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django import forms
-from .models import Post
+from .models import Post,Comment
 from django.forms import ModelForm, Select,TextInput
 
 class PostForm(ModelForm):
@@ -11,3 +11,8 @@ class PostForm(ModelForm):
             'content':SummernoteWidget(),
             'slug': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Copy the title with no space and a hyphen in between'}),
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'email', 'body')
