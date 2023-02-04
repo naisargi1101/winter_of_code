@@ -12,13 +12,15 @@
     </div>
     {% endfor %}
     <h3>Signin Page</h3>
-    <form action="/signin" method="post">
+    <form action="" method="post">
         {% csrf_token %}
         <label for="">UserName</label>
         <input type="text" id="username" name="username" placeholder="Create Username"><br>
 
         <label for="">Password</label>
         <input type="password" id="pass1" name="pass1" placeholder="Enter Password"><br>
+
+        <a href="reset_password/">Forgot Password?</a>
 
         <button type="submit">Sign In</button>
     
