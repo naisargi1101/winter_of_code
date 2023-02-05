@@ -3,9 +3,9 @@ from django.urls import path,include
 from . import views
 
 urlpatterns = [
-    path('', views.PostList.as_view(), name='homeUser'),
-    path('createPost/<slug:slug>',views.postSave,name="createBlog"),
-    path('profile/',views.profile.as_view(),name="profile"),
-    path('<slug:slug>/', views.postDetail, name='post_detail'),
+    path('<int:userId>', views.PostList.as_view(), name='homeUser'),
+    path('profile/<int:userId>',views.profile.as_view(),name="profileView"),
+    path('createPost/<slug:slug>/<int:userId>',views.postSave,name="createBlog"),
+    path('<slug:slug>/<int:userId>', views.postDetail, name='post_detail'),
     path('summernote/', include('django_summernote.urls')),
 ]

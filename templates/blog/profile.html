@@ -16,21 +16,33 @@
     }
 </style>
 
-<div class="container">
-    <div class="row">
+<div class="container" style="width: 60%;">
         <!-- Blog Entries Column -->
-        <div class="col-md-8 mt-3 left">
+        <div class="col-md-12 mt-3">
             {% for post in post_list %}
-            <div class="card mb-4">
+            <div class="card border-dark mb-4">
+                <h2 class="card-header">{{ post.title }}</h2>
                 <div class="card-body">
-                    <h2 class="card-title">{{ post.title }}</h2>
-                    <p class="card-text text-muted h6">{{ post.created_on}} </p>
                     <p class="card-text">{{post.content|slice:":200" }}</p>
-                    <a href="{% url 'createBlog' post.slug  %}" class="btn btn-primary" style="float: right;">View and Edit &rarr;</a>
+                    <a href="{% url 'createBlog' post.slug userId %}" class="btn btn-primary" style="float: right;">View and Edit &rarr;</a>
                 </div>
+                <p class="card-footer text-muted h6">{{ post.created_on}} </p>
             </div>
             {% endfor %}
         </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation conatiner"></nav>
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
     </div>
+    {% endif %}
 </div>
 {%endblock%}

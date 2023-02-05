@@ -18,7 +18,9 @@ class Post(models.Model):
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-
+    companyName = models.CharField(max_length=200,null=True)
+    typeOfOffer = models.CharField(max_length=200,null=True)
+    jobProfile = models.CharField(max_length=200,null=True)
     author = models.ForeignKey(Profile, on_delete=models.PROTECT,default=1)
     #tags = models.ManyToManyField(Tag, blank=True)
 

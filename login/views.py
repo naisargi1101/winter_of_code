@@ -88,7 +88,7 @@ def signin(request):
         if user:
             login(request,user)
             fname = user.first_name
-            return redirect('homeUser')
+            return redirect('homeUser',user.id)
         else:
             messages.error(request,"Wrong username or password")
             return redirect('home')

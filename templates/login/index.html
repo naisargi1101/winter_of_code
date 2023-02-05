@@ -1,8 +1,103 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+  <title>Winter of Code</title>
+  <style>
+    /* Add custom styles here */
+    body {
+      background-color: #1F1F1F;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 30px;
+    }
+    .header a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: #ff7c00;
+      border-radius: 25px;
+      margin-right: 20px;
+    }
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      background-color: #ff7c00;
+    }
+    .title-container h1 {
+      font-size: 48px;
+      font-weight: bold;
+      text-shadow: 1px 1px #1F1F1F;
+    }
+    .about-container {
+      padding: 50px;
+      background-color: #1F1F1F;
+    }
+    .about-container h2 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .about-container p {
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+      background-color: #ff7c00;
+      color: #fff;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="/signin">Sign In</a>
+    <a href="/signup">Sign Up</a>
+  </div>
+  <div class="container">
+    <div class="title-container">
+      <h1>Winter of Code</h1>
+    </div>
+    <div class="about-container">
+      <h2>About Winter of Code</h2>
+      <p>Winter of Code is a coding competition that provides an opportunity for students and developers to hone their skills and create innovative projects. Participants will have the chance to learn from experienced mentors and network with like-minded individuals in the tech community. Join us for this exciting and challenging event!</p>
+    </div>
+  </div>
+  <div class="footer">
+    &copy; Naisargi Savaliya
+  </div>
+</body>
+</html>
 
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
 </head>
 <body>
     {% for message in messages %}
@@ -12,7 +107,21 @@
     </div>
     {% endfor %}
 
-    <h3>Welcome to Home page</h3>
+    <div class="container">
+        <button class="btn"><a href="/signin" style="color: #F0E9D2;">Sign In</a></button>
+        <button class="btn"><a href="/signup" style="color: #F0E9D2;">Sign Up</a></button>
+        <p class="text">Winter <br><span>Of Code</span></p>
+    </div>
+    <div class="container2">
+        <p class="txt" style="font-weight: bolder; font-size: 50px;">About The Program</p><br>
+        <p class="txt" style="font-size: larger; font-weight: bold;">Winter of Code is a program aimed to increase participation for the Google Summer of Code program among students in colleges and universities.</p>
+        <br><p class="txt" style="font-size: medium;">Winter of Code is here to light up your winter spirits with the wide world of open source development. This initiative aims to prepare you for the grand Google Summer of Code. Join us for a month-long programming project with an open-source organisation.
+            <br><br>
+            As a part of the Winter of Code, students are paired with mentors from the participating organisation. This initiative aims at developing your skills in real-world software development in a wide range of specializations. In turn, the participating organisation gets to know your potential and also gives you the correct exposure that you need in your formative years. Above all, we hope you get encouraged into the world of open source and develop more code for the benefit of all.</p>
+    </div>
+    <div class="container3">
+        <p style="font-weight: bolder; font-size: 40px;">Submitted By: Naisargi Savaliya</p>
+    </div>
 
     {% if user.is_authenticated %}
     <h3>Hello {{fname}}</h3>
@@ -23,4 +132,4 @@
     {% endif %}
     
 </body>
-</html>
+</html> -->

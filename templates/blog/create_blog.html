@@ -2,12 +2,46 @@
 <html>
     <head>
         <title>Create Post</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     </head>
     <body>
-        <form action = "" method = "post">
-            {% csrf_token %}
-            {{form }}
-            <input type="submit" value="Submit">
-        </form>
+        <div class="form-container">
+            <form method="post">
+              {% csrf_token %}
+              <div class="row">
+                {% for field in form %}
+                  {% if field.name != 'content' %}
+                    <div class="col-md-6" style="margin-top: 10px;">
+                      {{ field.label_tag }} {{ field }}
+                    </div>
+                  {% else %}
+                  <div class="col-md-12" style="margin-top: 10px;">
+                    {{ field.label_tag }} {{ field }}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+          </div>
+          
+          <style>
+          .form-container {
+            width: 60%;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+          }
+          
+          .form-container form input[type="submit"] {
+            margin-top: 20px;
+            width: 100px;
+          }
+          </style>
+          
+          
     </body>
 </html>
