@@ -1,62 +1,63 @@
 {% load static %}
-<!DOCTYPE html>
 <html>
-
-    <head>
-        <title>Interview Blog</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-        <meta name="google" content="notranslate" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  <head>
+    <title>Interview Experience Blog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    </head>
-
-    <body>
-        <style>
-            body {
-            font-family: "Roboto", sans-serif;
-            font-size: 17px;
-            background-color: #fdfdfd;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        *{
+            top: 0;
+            left: 0;
+            margin: 0;
         }
-        .shadow {
-            box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+        header {
+            background-color: black;
+            color: orange;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
         }
-        .btn-danger {
-            color: #fff;
-            background-color: #f00000;
-            border-color: #dc281e;
-        }
-        .masthead {
-            background: #3398E1;
-            height: auto;
-            padding-bottom: 15px;
-            box-shadow: 0 16px 48px #E3E7EB;
-            padding-top: 10px;
-        }
+        .profile-icon {
+        background-color: orange;
+        color: black;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 20px;
+      }
+      .content-block {
+        background-color: orange;
+        color: black;
+        padding: 20px;
+        margin: 20px;
+      }
+      body {
+        padding-top: 100px;
+      }
     </style>
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
-            <div class="container-fluid">
-                <img class="navbar-brand" src="{% static 'image/woc.png' %}" style="width: 40px; height: 40px; margin: 0 20px;">
-                <a class="navbar-brand">Winter Of Code</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item text-black">
-                            <a href="{% url 'profileView' userId %}"><i class="fa-solid fa-user fa-2x" style="border: #3398E1 2px solid;border-radius: 20%;padding: 5px;"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        {% block content %}
+  </head>
+  <body>
+    <header>
+      <img src="{% static 'image/woc.png' %}" style="width: 40px; height: 40px; margin: 0 20px;">
+      <h1>Interview Experience Blogs</h1>
+      <div class="profile-icon"><a href="{% url 'profileView' userId %}">P</a></div>
+    </header>
+    <div class="content-block">
+    {% block content %}
         <!-- Content Goes here -->
-        {% endblock content %}
-        <!-- Footer -->
-    </body>
+    {% endblock content %}
+    </div>
+  </body>
 </html>
+
+

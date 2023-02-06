@@ -7,18 +7,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <style>
-        .form-group{
-            margin-top: 10px;
-        }
+        .title{
+      margin: 0 auto;
+      text-align: center;
+    }
+    .container{
+      width: 70%;
+      padding: 20px;
+    }
+    .form-label {
+        margin-top: 10px;
+      color: black;
+    }
+    .form-control {
+      color: black;
+      border-color: orange;
+    }
+    .btn-primary {
+      background-color: orange;
+      color: black;
+    }
+    .btn-primary:hover{
+      background-color: orange;
+      color:black;
+    }
+    .alert {
+      background-color: orange;
+      color: black;
+      border-color: black;
+    }
+  </style>
     </style>
 </head>
 <body>
-    {% for message in messages %}
+    <!-- {% for message in messages %}
     <div>
         <strong class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">Message: </strong>{{message}}
         <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true"></spanaria-hidden>&times;</span></button>
     </div>
-    {% endfor %}
+    {% endfor %} -->
     <div class="container">
         <h1 class="text-center mt-3">Winter of Code Sign Up</h1>
         <form action="/signup" method="post" style="border: 2px #000 solid;padding: 20px;">

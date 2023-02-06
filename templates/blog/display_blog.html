@@ -1,53 +1,66 @@
 {% extends "blog/base.html" %}
 {% block content %}
 <style>
-    body {
-        font-family: "Roboto", sans-serif;
-        font-size: 18px;
-        background-color: #fdfdfd;
-    }
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    .head_text {
-        color: white;
-    }
+.card {
+  width: 50%;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  text-align: left;
+  margin-bottom: 20px;
+  background-color: white;
+}
 
-    .card {
-        box-shadow: 0 16px 48px #E3E7EB;
-    }
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.date {
+  font-size: 14px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px;
+  margin-bottom: 10px;
+  max-height: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
+}
+
+.read-more {
+  font-size: 16px;
+  color: black;
+  text-decoration: underline;
+}
+
 </style>
-
-<header class="masthead" style="background-color: #007bff;">
-    <div class="overlay"></div>
-    <div class="container" >
-        <div class="row">
-            <div class=" col-md-8 col-md-10 mx-auto" >
-                <div class="site-heading" >
-                    <p class=" site-heading my-4 mt-3 text-white" style="text-align: center; font-size: 40px; font-weight: bolder;"> Welcome to Interview Experience Blog </p>
-                </div>
-            </div>
-        </div>
+<div class="card-container">
+    {% for post in post_list %}
+    <div class="card">
+      <h2 class="title">{{ post.title }}</h2>
+      <h3 class="subtitle">{{ post.author_id }} | {{ post.created_on }}</h3>
+      <p class="description">{{post.content|slice:":200" }}</p>
+      <button type="button" style="float: right; background-color: orange;padding: 10px;border-radius: 5px; border: 1px orange;width: 20%;"><a href="{% url 'post_detail' post.slug userId %}" class="read-more">Read More</a></button>
     </div>
-</header>
-<div class="container">
-    <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8 mt-4 left">
-            {% for post in post_list %}
-            <div class="card border-dark mb-4">
-                <h2 class="card-header">{{ post.title }}</h2>
-                
-                <div class="card-body">
-                    <p class="card-text">{{post.content|slice:":200" }}</p>
-                    <a href="{% url 'post_detail' post.slug userId %}" class="btn btn-primary" style="float:right">Read More &rarr;</a>
-                </div>
-                <div class="card-footer text-muted">
-                    <p class="text-muted h6">{{ post.author_id }} | {{ post.created_on}} </p>
-                  </div>
-            </div>
-            {% endfor %}
-        </div>
-        {% block sidebar %} {% include 'blog/sidebar.html' %} {% endblock sidebar %}
-    </div>
+    {% endfor %}
     {% if is_paginated %}
         <nav aria-label="Page navigation conatiner"></nav>
         <ul class="pagination justify-content-center">
@@ -61,6 +74,6 @@
         </ul>
         </nav>
         </div>
-        {% endif %}
+    {% endif %}
 </div>
-{%endblock%}
+{% endblock content %}

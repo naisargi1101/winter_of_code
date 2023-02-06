@@ -46,35 +46,35 @@ def signup(request):
         myuser = User.objects.create_user(username,email,pass1)
         myuser.first_name = fname
         myuser.last_name = lname
-        myuser.is_active = False
+        myuser.is_active = True
         myuser.save()
 
-        messages.success(request,"Your Account Has Been Created Successfully. We have sent you a confirmation email.")
-        # welcome Email
-        subject = "welcome to Winter of code!!"
-        message = "Hello" + myuser.first_name + "Welcome to winter of code. This email is confirmation Email. Your Email Id is successfully registered with Winter of code. Thank you. "
-        from_email = settings.EMAIL_HOST_USER
-        to_list = {myuser.email}
-        send_mail(subject,message,from_email,to_list,fail_silently=True)
+        # messages.success(request,"Your Account Has Been Created Successfully. We have sent you a confirmation email.")
+        # # welcome Email
+        # subject = "welcome to Winter of code!!"
+        # message = "Hello" + myuser.first_name + "Welcome to winter of code. This email is confirmation Email. Your Email Id is successfully registered with Winter of code. Thank you. "
+        # from_email = settings.EMAIL_HOST_USER
+        # to_list = {myuser.email}
+        # send_mail(subject,message,from_email,to_list,fail_silently=True)
 
-        #Email Address Confirmation Email
-        current_site = get_current_site(request)
-        email_subject = "Confirm your email with winter of code"
-        message2 = render_to_string('email_confirmation.html',{
-            'name':myuser.first_name,
-            'domain':current_site.domain,
-            'uid':urlsafe_base64_encode(force_bytes(myuser.pk)),
-            'token': generate_token.make_token(myuser)
-        })
+        # #Email Address Confirmation Email
+        # current_site = get_current_site(request)
+        # email_subject = "Confirm your email with winter of code"
+        # message2 = render_to_string('email_confirmation.html',{
+        #     'name':myuser.first_name,
+        #     'domain':current_site.domain,
+        #     'uid':urlsafe_base64_encode(force_bytes(myuser.pk)),
+        #     'token': generate_token.make_token(myuser)
+        # })
 
-        email = EmailMessage(
-            email_subject,
-            message2,
-            settings.EMAIL_HOST_USER,
-            [myuser.email],
-        )
-        email.fail_silently = True
-        email.send()
+        # email = EmailMessage(
+        #     email_subject,
+        #     message2,
+        #     settings.EMAIL_HOST_USER,
+        #     [myuser.email],
+        # )
+        # email.fail_silently = True
+        # email.send()
         return redirect('signin')
 
     return render(request,'login/signup.html')

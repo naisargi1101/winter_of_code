@@ -6,7 +6,7 @@ from django.forms import ModelForm, Select,TextInput
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['title','slug','companyName','typeOfOffer','jobProfile','content','status']
+        fields = ['title','slug','companyName','typeOfOffer','jobProfile','content','status','author']
         labels = {
             'title': 'Post Title',
             'slug': 'Slug',
@@ -15,6 +15,7 @@ class PostForm(ModelForm):
             'jobProfile': 'Job Profile',
             'content': 'Post Content',
             'status': 'Post Status',
+            'author':''
         }
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter the post title'}),
@@ -24,6 +25,7 @@ class PostForm(ModelForm):
             'jobProfile': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter the job profile'}),
             'content': SummernoteWidget(),
             'status': forms.Select(attrs={'class':'form-control'}),
+            'author':forms.TextInput(attrs={'style':'display:none;'})
         }
 
 

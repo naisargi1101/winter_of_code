@@ -40,13 +40,13 @@ def postDetail(request,slug,userId):
                                            'comment_form': comment_form,
                                            'userId':userId})
 
-def postSave(request,slug=None,userId=None):
+def postSave(request,id=0,userId=None):
     context ={}     
-    if slug:
-        post = get_object_or_404(Post, slug=slug)   
+    if id>0:
+        post = get_object_or_404(Post, id=id)   
     else:
         post = None  
-    form = PostForm(request.POST or None, instance=post)
+    form = PostForm(request.POST or None, instance=post, initial={'author': userId})
     if request.method == "POST":
         if form.is_valid():
             form.save()
